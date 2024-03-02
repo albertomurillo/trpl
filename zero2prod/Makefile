@@ -21,4 +21,4 @@ test:
 	cargo test
 
 watch:
-	cargo watch -x run
+	cargo watch -x test
