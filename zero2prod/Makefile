@@ -1,6 +1,6 @@
-.PHONY: all audit build coverage format lint test
+.PHONY: all audit build coverage deps format lint run test watch
 
-all: test lint build
+all: format test lint build
 
 audit:
 	cargo audit
@@ -11,11 +11,18 @@ build:
 coverage:
 	cargo tarpaulin
 
+deps:
+	cargo update
+	cargo +nightly udeps
+
 format:
 	cargo fmt -- --check
 
 lint:
 	cargo clippy -- -D warnings
+
+run:
+	cargo run
 
 test:
 	cargo test
